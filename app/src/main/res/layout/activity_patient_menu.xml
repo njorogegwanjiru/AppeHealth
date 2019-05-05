@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".patient_menu">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/first"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/need"
+                android:background="@drawable/needle"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_marginRight="10dp"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:text="Find Doctor"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textColor="#111"
+                android:background="@drawable/bgg"
+                android:layout_toRightOf="@id/need"
+                android:clickable="true"
+                android:onClick="doctor"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seco"
+            android:layout_below="@+id/first"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/need2"
+                android:background="@drawable/needle"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_marginRight="10dp"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:text="Find Hospital"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textColor="#111"
+                android:background="@drawable/bgg"
+                android:layout_toRightOf="@id/need2"
+                android:clickable="true"
+                android:onClick="hospital"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/third"
+            android:layout_below="@+id/seco"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/need3"
+                android:background="@drawable/needle"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_marginRight="10dp"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:text="My Medication"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textColor="#111"
+                android:background="@drawable/bgg"
+                android:layout_toRightOf="@id/need3"
+                android:clickable="true"
+                android:onClick="appointments"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fourth"
+            android:layout_below="@+id/third"
+            android:layout_centerHorizontal="true">
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/need4"
+                android:background="@drawable/needle"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_marginRight="10dp"
+                android:layout_width="300dp"
+                android:layout_height="80dp"
+                android:text="My Appointments"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textColor="#111"
+                android:background="@drawable/bgg"
+                android:layout_toRightOf="@id/need4"
+                android:clickable="true"
+                android:onClick="meds"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

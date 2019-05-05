@@ -5,63 +5,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LogIn"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:background="@drawable/back_color">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/dp"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="25dp"
-        android:scaleType="fitStart"
-        android:src="@drawable/profile"
-        android:visibility="visible"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"
+        android:src="@drawable/logo"
+        android:id="@+id/log"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/l3"
-        android:layout_below="@+id/dp"
-        android:orientation="vertical">
+        android:layout_below="@+id/log"
+        android:orientation="vertical"
+        android:layout_marginBottom="40dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email Address:"
-            android:textSize="20sp"
-            android:layout_marginRight="15dp"
+            android:text="@string/email_address"
+            android:textSize="@dimen/text_size"
+            android:textColor="#111"
             />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/loginEmail"
             android:inputType="textEmailAddress"
-            android:layout_below="@+id/dp"
-            android:layout_marginBottom="15dp"
-            android:textSize="20dp"/>
-    </LinearLayout>
+            android:textSize="15sp"
+            android:textColor="#111"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/l4"
-        android:layout_below="@+id/l3"
-        android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Paasword:"
-            android:textSize="20sp"
-            android:layout_marginRight="15dp"
+            android:text="@string/password"
+            android:textSize="@dimen/text_size"
+            android:textColor="#111"
             />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/loginPass"
-            android:inputType="date"
-            android:layout_below="@id/loginEmail"
+            android:inputType="textPassword"
             android:layout_marginBottom="15dp"
-            android:textSize="20dp"/>
+            android:textSize="@dimen/text_size"
+            android:textColor="#111"/>
 
     </LinearLayout>
 
@@ -70,8 +62,9 @@
         android:layout_height="wrap_content"
         android:text="Log In"
         android:id="@+id/login"
-        android:layout_below="@id/l4"
+        android:layout_below="@id/l3"
         android:background="@drawable/buttons_bg"
         android:textSize="20dp"
+        android:layout_centerVertical="true"
         />
 </RelativeLayout>

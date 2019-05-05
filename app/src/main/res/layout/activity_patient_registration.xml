@@ -6,232 +6,232 @@
     android:layout_height="match_parent"
     tools:context=".PatientRegistration"
     android:padding="15dp"
-    android:textSize="20dp">
+    android:textSize="20dp"
+    android:background="@drawable/back_color">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:src="@drawable/logo"
+        android:id="@+id/log"/>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
+        android:layout_height="wrap_content"
+        android:id="@+id/scroll"
+        android:layout_below="@+id/log">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:text="@string/personal_details"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:layout_marginBottom="20dp"
+            android:textColor="#111"
+            />
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/dp"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginBottom="25dp"
-                android:src="@drawable/profile"
-                android:visibility="visible"
-                android:layout_centerHorizontal="true"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/l1"
-                android:layout_below="@+id/dp"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="First Name"
-                    android:textSize="20sp"
-                    android:layout_marginRight="15dp"
-                    />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/patientFirstName"
-                    android:inputType="textPersonName"
-                    android:textSize="20sp"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/l2"
-                android:layout_below="@+id/l1"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Middle Name"
-                    android:textSize="20sp"
-                    android:layout_marginRight="15dp"
-                    />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/patientMiddleName"
-                    android:inputType="textPersonName"
-                    android:textSize="20dp"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/l3"
-                android:layout_below="@+id/l2"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Last Name"
-                    android:textSize="20sp"
-                    android:layout_marginRight="15dp"
-                    />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/patientLastName"
-                    android:inputType="textPersonName"
-                    android:textSize="20dp"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/l4"
-                android:layout_below="@+id/l3"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Email Address"
-                    android:textSize="20sp"
-                    android:layout_marginRight="15dp"
-                    />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/patientEmail"
-                    android:inputType="textEmailAddress"
-                    android:textSize="20dp"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/l5"
-                android:layout_below="@+id/l4"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Phone Number"
-                    android:textSize="20sp"
-                    android:layout_marginRight="15dp"
-                    />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/patientPhone"
-                    android:inputType="phone"
-                    android:textSize="20dp"
-                    />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/l6"
-                android:layout_below="@+id/l5"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Year Of Birth"
-                    android:textSize="20sp"
-                    android:layout_marginRight="15dp"
-                    />
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:editable="false"
-                    android:focusable="false"
-                    android:id="@+id/patientDOB"
-                    android:inputType="date"
-                    android:layout_below="@+id/patientPhone"
-                    android:layout_marginBottom="15dp"
-                    android:textSize="20sp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/l7"
-                android:layout_below="@+id/l6"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gender"
-                    android:layout_marginRight="25dp"
-                    android:textSize="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/first_name"
+            android:textSize="15sp"
+            android:textColor="#111"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/patientFirstName"
+            android:inputType="textPersonName"
+            android:textSize="15sp"
+            android:textColor="#111"
+            />
 
-                <RadioGroup
-                    android:id="@+id/patientGender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="15dp"
-                    android:textSize="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/middle_name"
+            android:textSize="15sp"
+            android:textColor="#111"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/patientMiddleName"
+            android:inputType="textPersonName"
+            android:textSize="15sp"
+            android:textColor="#111"
+            />
 
-
-                    <RadioButton
-                        android:id="@+id/radioMale"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="Male"
-                        android:layout_marginRight="80dp"
-                        android:textSize="20dp"
-                        android:textColor="#ff6d6e71"
-                        android:layout_gravity="center_vertical"/>
-
-                    <RadioButton
-                        android:id="@+id/radioFemale"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:text="Female"
-                        android:textSize="20dp"
-                        android:textColor="#ff6d6e71" />
-                </RadioGroup>
-            </LinearLayout>
-
-
-            <EditText
-                android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/last_name"
+            android:textSize="15sp"
+            android:textColor="#111"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/patientLastName"
+            android:inputType="textPersonName"
+            android:textSize="15sp"
+            android:textColor="#111"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/year_of_birth"
+            android:textSize="15sp"
+            android:textColor="#111"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:editable="false"
+            android:focusable="true"
+            android:id="@+id/patientDOB"
+            android:inputType="date"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gender"
+            android:textSize="15sp"
+            android:textColor="#111"/>
+        <RadioGroup
+            android:id="@+id/patientGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textSize="15sp"
+            android:orientation="vertical"
+            android:textColor="#111"
+            >
+            <RadioButton
+                android:id="@+id/radioMale"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Password"
-                android:id="@+id/patientPass"
-                android:inputType="date"
-                android:layout_below="@id/l7"
-                android:layout_marginBottom="15dp"
-                android:textSize="20dp"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Confirm Password"
-                android:id="@+id/patientPass2"
-                android:inputType="date"
-                android:layout_below="@id/patientPass"
-                android:layout_marginBottom="25dp"
-                android:textSize="20dp"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Register"
-                android:id="@+id/register"
-                android:layout_below="@id/patientPass2"
-                android:background="@drawable/buttons_bg"
-                android:textSize="20dp"
-                android:layout_marginBottom="15dp"
+                android:checked="true"
+                android:text="@string/male"
+                android:textSize="15sp"
+                android:textColor="#111"
                 />
 
-        </RelativeLayout>
+            <RadioButton
+                android:id="@+id/radioFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/female"
+                android:textSize="15sp"
+                android:textColor="#111"
+                />
+        </RadioGroup>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/contact_details"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textColor="#111"
+            android:textAlignment="center"
+            android:layout_marginBottom="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email_address"
+            android:textSize="@dimen/text_size"
+            android:textColor="#111"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/patientEmail"
+            android:inputType="textEmailAddress"
+            android:textSize="15sp"
+            android:textColor="#111"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_number"
+            android:textSize="@dimen/text_size"
+            android:textColor="#111"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/patientPhone"
+            android:inputType="phone"
+            android:textSize="15sp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#111"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/set_up_password"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:layout_marginBottom="20dp"
+            android:textColor="#111"
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:id="@+id/patientPass"
+            android:inputType="textPassword"
+            android:layout_marginBottom="15dp"
+            android:textSize="@dimen/text_size"
+            android:textColor="#111"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/confirm_password"
+            android:id="@+id/patientPass2"
+            android:inputType="textPassword"
+            android:layout_marginBottom="25dp"
+            android:textSize="@dimen/text_size"
+            android:textColor="#111"/>
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/buttons_bg"
+            android:clickable="true"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:text="@string/create_account"
+            android:textAlignment="center"
+            android:textColor="#111"
+            android:textSize="25sp"
+            android:textStyle="bold"
+
+            />
+    </LinearLayout>
 
     </ScrollView>
 
 
+
+
 </RelativeLayout>
+

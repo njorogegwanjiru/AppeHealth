@@ -13,6 +13,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -37,7 +38,7 @@ EditText patientFirstName, patientMiddleName, patientLastName, patientEmail, pat
 RadioGroup patientGender;
 RadioButton gender;
 Calendar myCalendar ;
-Button register;
+TextView register;
 FirebaseAuth auth;
 ProgressDialog pd;
 DatabaseReference reference;
@@ -115,7 +116,7 @@ DatabaseReference reference;
                 gender = findViewById(selectedId);
             }
 
-            private void birthDate() {
+            public void birthDate() {
                 myCalendar = Calendar.getInstance();
                 final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
@@ -173,7 +174,7 @@ DatabaseReference reference;
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()){
-                                                Intent intent = new Intent(PatientRegistration.this, Home.class);
+                                                Intent intent = new Intent(PatientRegistration.this, patient_menu.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                                 startActivity(intent);
                                             }
@@ -189,4 +190,7 @@ DatabaseReference reference;
             }
 
 
+            public void callTwo(){
+
+            }
 }

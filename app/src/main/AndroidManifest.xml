@@ -15,12 +15,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".PatientRegistration">
+        <activity
+            android:name=".FullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".patient_menu" />
+        <activity android:name=".All_Patients" />
+        <activity android:name=".Patient_all" />
+        <activity android:name=".Settings" />
+        <activity android:name=".PatientRegistration"/>
         <activity android:name=".LogIn" />
         <activity android:name=".Home" />
     </application>
