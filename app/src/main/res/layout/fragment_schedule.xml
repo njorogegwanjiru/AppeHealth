@@ -3,16 +3,18 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Fragments.Schedule">
+        tools:context=".Patient.Fragments.Schedule">
 
-        <TextView
+
+    <android.support.design.chip.ChipGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <android.support.design.chip.Chip
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tap on the picture to edit your Profile picture"
-            android:textColor="@color/Blue"
-            android:textSize="18sp"
-            android:layout_centerHorizontal="true"
-            android:textStyle="bold" />
+            android:text="Location"
+            android:textAppearance="@dimen/text_size"/>
+    </android.support.design.chip.ChipGroup>
 
 
     </RelativeLayout>

@@ -26,4 +26,9 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="password">Password</string>
+    <string name="hospital_name">Hospital Name</string>
+    <string name="hospital_location">Hospital Location</string>
+    <string name="year_of_births">Year of Birth</string>
+    <string name="hospital">Hospital</string>
+    <string name="private_practice">Private Practice</string>
 </resources>

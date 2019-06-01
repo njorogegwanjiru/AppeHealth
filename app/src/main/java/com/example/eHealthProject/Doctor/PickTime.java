@@ -3,7 +3,6 @@ package com.example.eHealthProject.Doctor;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,27 +13,25 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.eHealthProject.Admin.DoctorRegistration;
-import com.example.eHealthProject.Admin.HospitalRegistration;
-import com.example.eHealthProject.Models.Doctor;
-import com.example.eHealthProject.Models.Location;
 import com.example.eHealthProject.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
 
 public class PickTime extends AppCompatActivity {
     private static final String TAG = "PickTime";
@@ -49,8 +46,18 @@ public class PickTime extends AppCompatActivity {
     List<String> doctorsDays;
     List<String> details;
 
+
+    String[] docdays;
     FirebaseAuth auth;
     DatabaseReference reference;
+    DatabaseReference reference2;
+    String doctorId;
+    String selectedday;
+    String myFormat = "dd/MM/yyyy";
+    SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);;
+
+    public PickTime() {
+    }
 
 
     @Override
@@ -69,6 +76,7 @@ public class PickTime extends AppCompatActivity {
 
         doctorsDays = new ArrayList();
         details = new ArrayList<>();
+        docdays = new String[7];
 
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,20 +154,25 @@ public class PickTime extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 doctorsDays.clear();
                 doctorsDays.add("Select a day");
+                docdays[0] = "";docdays[1] = "";docdays[2] = "";docdays[3] = "";docdays[4] = "";docdays[5] = "";docdays[6] = "";
 
+                int x = 0;
                 for (DataSnapshot snapshot: dataSnapshot.getChildren())
                 {
                     Log.d(TAG, "data: "+ snapshot.getChildren());
 
-                    String doc = (String) snapshot.getValue();
+                    String doc = snapshot.getValue().toString();
                     if(doc == null){
                         Log.d(TAG, "Doctor object is null: ");
                     }else {
                         Log.d(TAG, "Doctor Object : "+ doc);
                         doctorsDays.add(doc);
+                        docdays[x] = doc;
                     }
+                    x++;
                 }
-                ArrayAdapter adapter = new ArrayAdapter (PickTime.this, android.R.layout.simple_spinner_item, doctorsDays);
+
+                ArrayAdapter adapter = new ArrayAdapter(PickTime.this, android.R.layout.simple_spinner_item, docdays);
                 days.setAdapter(adapter);
             }
             @Override
@@ -169,34 +182,102 @@ public class PickTime extends AppCompatActivity {
         });
     }
     public void saveTime(View view) {
-        String selectedday = days.getSelectedItem().toString();
+        selectedday = days.getSelectedItem().toString();
         String starttext = start.getText().toString();
         String endtext = end.getText().toString();
         String durationtext =  duration.getText().toString();
         String maxtext = max.getText().toString();
 
-        details.add(0,starttext);
-        details.add(1,endtext);
-        details.add(2, durationtext);
-        details.add(3, maxtext);
+
+        HashMap<String, String> details = new HashMap<>();
+        details.put("Start Time", String.valueOf(starttext));
+        details.put("End Time", String.valueOf(endtext));
+        details.put("Duration", String.valueOf(durationtext));
+        details.put("Maximum", String.valueOf(maxtext));
 
         FirebaseUser firebaseUser = auth.getCurrentUser();
-        String doctorId = firebaseUser.getUid();
+        doctorId = firebaseUser.getUid();
 
-        reference = FirebaseDatabase.getInstance().getReference("Doctors").child(doctorId).child("Days").child(selectedday);
+        reference = FirebaseDatabase.getInstance().getReference("Doctors").child(doctorId).child("Times").child(selectedday);
         reference.setValue(details).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(PickTime.this, "Time Updated", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(PickTime.this, PickTime.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(PickTime.this, PickTime.class);
+//                    startActivity(intent);
+
                 }
                 else {
                     Toast.makeText(PickTime.this, "Update failed. Try again.", Toast.LENGTH_LONG).show();
                 }
             }
         });
+        ArrayList timeslots = new ArrayList();
 
+        int fromHour, fromMinute, toHour, toMinute;
+
+        DateFormat df = new SimpleDateFormat("HH:mm");
+        String startFormat = df.format(starttext);
+        String endFormat = df.format(endtext);
+
+        fromHour = Integer.parseInt(startFormat.split(":")[0]);
+        fromMinute = Integer.parseInt(startFormat.split(":")[1]);
+
+        toHour = Integer.parseInt(endFormat.split(":")[0]);
+        toMinute = Integer.parseInt(endFormat.split(":")[1]);
+
+        int slotMinute = Integer.parseInt(durationtext);
+        long slot = slotMinute*60*1000;
+
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.set(Calendar.HOUR_OF_DAY, fromHour);
+        calendar2.set(Calendar.MINUTE, fromMinute);
+
+        long currentTime = calendar2.getTimeInMillis();
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.set(Calendar.HOUR_OF_DAY, toHour);
+        calendar1.set(Calendar.MINUTE, toMinute);
+
+        long endTime = calendar1.getTimeInMillis();
+
+        while (currentTime < endTime){
+            timeslots.add(sdf.format(new Date(currentTime)));
+            currentTime = currentTime + slot;}
+
+            HashMap<String, List> Slots = new HashMap<>();
+            Slots.put(selectedday,timeslots );
+            reference2 = FirebaseDatabase.getInstance().getReference("Doctors").child(doctorId).child("Slots").child(selectedday);
+            reference2.setValue(Slots);
+
+    }
+
+    public  ArrayList<String> getTimeSlot(int slotMinute, String strFromTme, String strToTime,  ArrayList<String> timeSlot){
+        int fromHour, fromMinute, toHour, toMinute;
+        fromHour = Integer.parseInt(strFromTme.split(":")[0]);
+        fromMinute = Integer.parseInt(strFromTme.split(":")[1]);
+
+        toHour = Integer.parseInt(strToTime.split(":")[0]);
+        toMinute = Integer.parseInt(strToTime.split(":")[1]);
+
+        long slot = slotMinute*60*1000;
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.set(Calendar.HOUR_OF_DAY, fromHour);
+        calendar2.set(Calendar.MINUTE, fromMinute);
+
+        long currentTime = calendar2.getTimeInMillis();
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.set(Calendar.HOUR_OF_DAY, toHour);
+        calendar1.set(Calendar.MINUTE, toMinute);
+
+        long endTime = calendar1.getTimeInMillis();
+
+        timeSlot = new ArrayList<>();
+        while (currentTime < endTime){
+            timeSlot.add(sdf.format(new Date(currentTime)));
+            currentTime = currentTime + slot;
+        }
+
+return timeSlot;
     }
 }

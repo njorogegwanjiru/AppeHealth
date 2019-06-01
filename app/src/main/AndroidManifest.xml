@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.e_health">
+    package="com.example.eHealthProject">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -15,23 +15,41 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Patient.Medication"></activity>
+        <activity android:name=".Patient.Filter" />
+        <activity android:name=".Doctor.PickTime" />
+        <activity android:name=".Doctor.PickBusinessHours"/>
+
+
+        <activity android:name=".Doctor.MainActivity" />
+        <activity android:name=".Admin.AdminViewHospitals" />
+        <activity android:name=".Admin.AdminViewDoctors" />
+        <activity android:name=".Shared.Help" />
+        <activity android:name=".Doctor.UpdateAppointments" />
+        <activity android:name=".Doctor.DocHome" />
+        <activity android:name=".Admin.admin_home" />
+        <activity android:name=".Patient.patient_view_doctors" />
+        <activity android:name=".Doctor.DoctorRegistration" />
+        <activity android:name=".Admin.LocationRegistration" />
+        <activity android:name=".Admin.HospitalRegistration" />
+        <activity android:name=".Patient.Location_Selector" />
         <activity
-            android:name=".FullscreenActivity"
+            android:name=".Shared.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/FullscreenTheme">
+            android:theme="@style/FullscreenTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".patient_menu" />
-        <activity android:name=".All_Patients" />
-        <activity android:name=".Patient_all" />
-        <activity android:name=".Settings" />
-        <activity android:name=".PatientRegistration"/>
-        <activity android:name=".LogIn" />
-        <activity android:name=".Home" />
+
+        <activity android:name=".Patient.patient_menu" />
+        <activity android:name=".Patient.All_Patients" />
+        <activity android:name=".Shared.Settings" />
+        <activity android:name=".Patient.PatientRegistration" />
+        <activity android:name=".Shared.LogIn" />
+        <activity android:name=".Patient.Home" />
     </application>
 
 </manifest>

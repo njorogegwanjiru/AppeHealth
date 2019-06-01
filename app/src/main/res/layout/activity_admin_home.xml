@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Admin.admin_home"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/desc"
+        android:layout_marginBottom="20dp"
+        android:text="What would you like to do?"
+        android:textColor="#111"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/doctor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_tabs"
+        android:text="Add new location"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:onClick="register_location"
+        android:layout_marginBottom="20dp"
+        />
+    <Button
+        android:id="@+id/hospital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_tabs"
+        android:text="Add new Hospital"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:onClick="register_hospital"
+        android:layout_marginBottom="20dp"
+        />
+
+    <Button
+        android:id="@+id/schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_tabs"
+        android:text="Add new doctor"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:onClick="register_doctor"
+        android:layout_marginBottom="20dp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_tabs"
+        android:text="View doctor"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:onClick="view_doctors"
+        android:layout_marginBottom="20dp"
+        />
+
+</LinearLayout>

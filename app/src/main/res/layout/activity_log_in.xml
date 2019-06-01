@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LogIn"
+    tools:context=".Shared.LogIn"
     android:padding="15dp"
     android:background="@drawable/back_color">
 
@@ -23,7 +23,48 @@
         android:id="@+id/l3"
         android:layout_below="@+id/log"
         android:orientation="vertical"
-        android:layout_marginBottom="40dp">
+        android:padding="10dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/forms">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log In as:"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:textColor="#111"
+            android:textStyle="bold"
+            />
+        <RadioGroup
+            android:id="@+id/category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:orientation="horizontal"
+            android:textColor="#111"
+            android:layout_marginBottom="20dp"
+            >
+            <RadioButton
+                android:id="@+id/radioDoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Doctor"
+                android:textSize="15sp"
+                android:textColor="#111"
+                android:layout_marginRight="60dp"
+                />
+
+            <RadioButton
+                android:id="@+id/radioPatient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Patient"
+                android:textSize="15sp"
+                android:textColor="#111"
+                />
+        </RadioGroup>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,16 +96,18 @@
             android:textSize="@dimen/text_size"
             android:textColor="#111"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log In"
+            android:id="@+id/login"
+            android:layout_below="@id/l3"
+            android:background="@drawable/buttons_bg"
+            android:textSize="20dp"
+            android:layout_centerVertical="true"
+            />
+
     </LinearLayout>
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Log In"
-        android:id="@+id/login"
-        android:layout_below="@id/l3"
-        android:background="@drawable/buttons_bg"
-        android:textSize="20dp"
-        android:layout_centerVertical="true"
-        />
+
 </RelativeLayout>

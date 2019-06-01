@@ -2,111 +2,100 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
-    tools:context=".All_Patients"
-    android:orientation="vertical">
-
+    tools:context=".Patient.All_Patients"
+    android:orientation="vertical"
+    >
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:background="@color/Blue">
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/MenuStyle">
+            app:popupTheme="@style/MenuStyle"
+            android:backgroundTint="@color/Blue"/>
+
+    </android.support.design.widget.AppBarLayout>
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/logo"/>
-        </android.support.v7.widget.Toolbar>
-    </android.support.design.widget.AppBarLayout>
-    <RelativeLayout
-        android:layout_width="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:src="@drawable/logo"
+                android:layout_marginBottom="20dp"/>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/desc"
+        android:layout_marginBottom="20dp"
+        android:text="What would you like to do?"
+        android:textColor="#111"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/doctor"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/desc"
-            android:layout_marginBottom="20dp"
-            android:text="What would you like to do?"
-            android:textColor="#111"
-            android:textSize="30sp" />
+        android:background="@drawable/home_tabs"
+        android:text="Find Doctors"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:onClick="doctor"
+        android:layout_marginBottom="20dp"
+        />
+    <Button
+        android:id="@+id/hospital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_tabs"
+        android:text="Find Hospitals"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:onClick="hospital"
+        android:layout_marginBottom="20dp"
+        />
 
-        <TextView
-            android:id="@+id/doctor"
-            android:layout_width="175dp"
-            android:layout_height="175dp"
-            android:background="@drawable/home_tabs"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp"
-            android:layout_below="@id/desc"
-            android:drawableTop="@drawable/ic_person_black_24dp"
-            android:text="Find Doctors"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:onClick="doctor"/>
-
-        <TextView
-            android:id="@+id/hospital"
-            android:layout_width="175dp"
-            android:layout_height="175dp"
-            android:background="@drawable/home_tabs"
-            android:layout_toRightOf="@+id/doctor"
-            android:layout_below="@id/desc"
-            android:layout_marginBottom="20dp"
-            android:drawableTop="@drawable/ic_local_hospital_black_24dp"
-            android:text="Find Hospitals"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:onClick="hospital"/>
-        <TextView
-            android:id="@+id/schedule"
-            android:layout_width="175dp"
-            android:layout_height="175dp"
-            android:background="@drawable/home_tabs"
-            android:layout_below="@+id/doctor"
-            android:layout_marginRight="20dp"
-            android:drawableTop="@drawable/ic_schedule_black_24dp"
-            android:text="My Appointments"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:onClick="appointments"/>
-        <TextView
-            android:id="@+id/medication"
-            android:layout_width="175dp"
-            android:layout_height="175dp"
-            android:background="@drawable/home_tabs"
-            android:layout_toRightOf="@+id/schedule"
-            android:layout_below="@id/hospital"
-            android:drawableTop="@drawable/ic_schedule_black_24dp"
-            android:text="My Medications"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:onClick="meds"/>
-    </RelativeLayout>
-
-
+    <Button
+        android:id="@+id/schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_tabs"
+        android:text="My Appointments"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:onClick="appointments"
+        android:layout_marginBottom="20dp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_tabs"
+        android:text="My Medications"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:onClick="meds"
+        />
 </LinearLayout>
+
+        </LinearLayout>
+
