@@ -16,6 +16,7 @@
         android:layout_margin="20dp"
         android:src="@drawable/logo"
         android:id="@+id/log"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:id="@+id/choice"

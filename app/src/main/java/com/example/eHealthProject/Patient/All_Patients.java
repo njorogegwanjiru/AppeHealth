@@ -27,12 +27,12 @@ public class All_Patients extends AppCompatActivity {
 
     public void doctor(View view) {
 
-        Intent intent = new Intent(view.getContext(), Location_Selector.class);
+        Intent intent = new Intent(view.getContext(), patient_view_doctors.class);
         startActivity(intent);
     }
     public void hospital(View view) {
 
-        Intent intent = new Intent(view.getContext(), Location_Selector.class);
+        Intent intent = new Intent(view.getContext(), patient_view_doctors.class);
         startActivity(intent);
     }
     public void appointments(View view) {

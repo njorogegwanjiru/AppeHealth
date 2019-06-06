@@ -10,6 +10,7 @@
     <color name="Blue">#1767E4</color>
     <color name="black">#111</color>
     <color name="red">#FF9292</color>
+    <color name="grey">#C3C3C5</color>
     <color name="black_overlay">#66000000</color>
 
 </resources>

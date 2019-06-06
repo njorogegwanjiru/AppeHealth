@@ -3,20 +3,58 @@ package com.example.eHealthProject.Doctor;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import com.example.eHealthProject.Patient.All_Patients;
 import com.example.eHealthProject.R;
+import com.example.eHealthProject.Shared.FullscreenActivity;
+import com.example.eHealthProject.Shared.Help;
+import com.example.eHealthProject.Shared.Settings;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class DocHome extends AppCompatActivity {
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_home);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     public void updateTime(View view) {
         Intent intent = new Intent(this, PickBusinessHours.class);
         startActivity(intent);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return  true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+
+            case R.id.settings:
+                startActivity(new Intent(DocHome.this, Settings.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                return true;
+
+            case R.id.help:
+                startActivity(new Intent(DocHome.this, Help.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                return true;
+
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(DocHome.this, FullscreenActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                return true;
+
+        }
+        return  false;
     }
 }

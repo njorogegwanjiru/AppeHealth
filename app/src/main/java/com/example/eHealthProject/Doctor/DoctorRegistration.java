@@ -259,7 +259,8 @@ public class DoctorRegistration extends AppCompatActivity {
                             doctors.put("Institution", String.valueOf(institution));
                             doctors.put("Location", String.valueOf(location));
                             doctors.put("Days", days);
-                            doctors.put("Times", "");
+                            doctors.put("Times", days);
+                            doctors.put("Slots", days);
                             pd.dismiss();
 
                             reference.setValue(doctors).addOnCompleteListener(new OnCompleteListener<Void>() {

@@ -43,7 +43,7 @@
                 android:layout_marginBottom="20dp"
                 android:layout_weight="1"
                 android:textSize="25sp"
-                android:text="Create Account" />
+                android:text="Patient Create Account" />
             <Button
                 android:id="@+id/docregister_btn"
                 android:background="@drawable/buttons_bg"

@@ -5,8 +5,109 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Patient.patient_view_doctors">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/nomeds"
+        android:visibility="invisible">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:id="@+id/oops"
+            android:src="@drawable/nomeds"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ops"
+            android:text="No medications yet. Tap icon add icon below to add medication."
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:textColor="#B0B3B3"/>
+    </LinearLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/ic_filter_list_black_24dp"
+        android:id="@+id/ficon"/>
+
+    <HorizontalScrollView
+        android:id="@+id/hs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/ficon"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+            <Button
+                android:id="@+id/locationFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chipsbg"
+                android:text="Location"
+                android:layout_margin="5dp"
+                android:padding="8dp"
+                />
+            <Button
+                android:id="@+id/hospitalFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chipsbg"
+                android:text="Hospital"
+                android:layout_margin="5dp"
+                android:padding="8dp"
+                />
+            <Button
+                android:id="@+id/specializationFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chipsbg"
+                android:text="Specialization"
+                android:layout_margin="5dp"
+                android:padding="8dp"
+                />
+            <Button
+                android:id="@+id/ageFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chipsbg"
+                android:text="Age"
+                android:layout_margin="5dp"
+                android:padding="8dp"
+                />
+            <Button
+                android:id="@+id/genderFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chipsbg"
+                android:text="Gender"
+                android:layout_margin="5dp"
+                android:padding="8dp"
+                />
+            <Button
+                android:id="@+id/availabilityFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chipsbg"
+                android:text="Availability"
+                android:layout_margin="5dp"
+                android:padding="8dp"
+                />
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
 
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@+id/hs"
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recycler_view">

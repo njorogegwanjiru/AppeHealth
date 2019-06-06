@@ -15,12 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Patient.Medication"></activity>
+        <activity android:name=".Patient.AppointmentInterface"></activity>
+        <activity android:name=".Patient.Medication" />
         <activity android:name=".Patient.Filter" />
         <activity android:name=".Doctor.PickTime" />
-        <activity android:name=".Doctor.PickBusinessHours"/>
-
-
+        <activity android:name=".Doctor.PickBusinessHours" />
         <activity android:name=".Doctor.MainActivity" />
         <activity android:name=".Admin.AdminViewHospitals" />
         <activity android:name=".Admin.AdminViewDoctors" />
@@ -36,14 +35,13 @@
         <activity
             android:name=".Shared.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/FullscreenTheme" >
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".Patient.patient_menu" />
         <activity android:name=".Patient.All_Patients" />
         <activity android:name=".Shared.Settings" />

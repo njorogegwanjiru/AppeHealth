@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -188,24 +189,30 @@ public class PickTime extends AppCompatActivity {
         String durationtext =  duration.getText().toString();
         String maxtext = max.getText().toString();
 
+        List<String> deets = new ArrayList<>();
+        deets.add(0,String.valueOf(starttext));
+        deets.add(1,String.valueOf(endtext) );
+        deets.add(2,String.valueOf(durationtext));
+        deets.add(3,String.valueOf(maxtext));
 
-        HashMap<String, String> details = new HashMap<>();
-        details.put("Start Time", String.valueOf(starttext));
-        details.put("End Time", String.valueOf(endtext));
-        details.put("Duration", String.valueOf(durationtext));
-        details.put("Maximum", String.valueOf(maxtext));
+//        HashMap<String, String> details = new HashMap<>();
+//        details.put("Start Time", String.valueOf(starttext));
+//        details.put("End Time", String.valueOf(endtext));
+//        details.put("Duration", String.valueOf(durationtext));
+//        details.put("Maximum", String.valueOf(maxtext));
 
         FirebaseUser firebaseUser = auth.getCurrentUser();
         doctorId = firebaseUser.getUid();
 
         reference = FirebaseDatabase.getInstance().getReference("Doctors").child(doctorId).child("Times").child(selectedday);
-        reference.setValue(details).addOnCompleteListener(new OnCompleteListener<Void>() {
+        reference.setValue(deets).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(PickTime.this, "Time Updated", Toast.LENGTH_LONG).show();
-//                    Intent intent = new Intent(PickTime.this, PickTime.class);
-//                    startActivity(intent);
+                    doctorsDays.remove(selectedday);
+                  Intent intent = new Intent(PickTime.this, PickTime.class);
+                  startActivity(intent);
 
                 }
                 else {
@@ -214,70 +221,60 @@ public class PickTime extends AppCompatActivity {
             }
         });
         ArrayList timeslots = new ArrayList();
-
-        int fromHour, fromMinute, toHour, toMinute;
-
         DateFormat df = new SimpleDateFormat("HH:mm");
-        String startFormat = df.format(starttext);
-        String endFormat = df.format(endtext);
+        try {
+            Date startdate = df.parse(starttext);
+            Date enddate = df.parse(endtext);
 
-        fromHour = Integer.parseInt(startFormat.split(":")[0]);
-        fromMinute = Integer.parseInt(startFormat.split(":")[1]);
+            int a = startdate.getHours();
+            int b = enddate.getHours();
+            int c = startdate.getMinutes();
+            int d = enddate.getMinutes();
 
-        toHour = Integer.parseInt(endFormat.split(":")[0]);
-        toMinute = Integer.parseInt(endFormat.split(":")[1]);
 
-        int slotMinute = Integer.parseInt(durationtext);
-        long slot = slotMinute*60*1000;
+            int interval = Integer.parseInt(durationtext);
 
-        Calendar calendar2 = Calendar.getInstance();
-        calendar2.set(Calendar.HOUR_OF_DAY, fromHour);
-        calendar2.set(Calendar.MINUTE, fromMinute);
 
-        long currentTime = calendar2.getTimeInMillis();
-        Calendar calendar1 = Calendar.getInstance();
-        calendar1.set(Calendar.HOUR_OF_DAY, toHour);
-        calendar1.set(Calendar.MINUTE, toMinute);
+            int startHM = a*60;
+            int startM = c;
+            int startminutes = startHM+startM;
+            int endHM = b*60;
+            int emdM = d;
+            int endminutes = endHM+emdM;
 
-        long endTime = calendar1.getTimeInMillis();
+            intervals(startminutes, endminutes, interval, timeslots);
 
-        while (currentTime < endTime){
-            timeslots.add(sdf.format(new Date(currentTime)));
-            currentTime = currentTime + slot;}
 
-            HashMap<String, List> Slots = new HashMap<>();
-            Slots.put(selectedday,timeslots );
             reference2 = FirebaseDatabase.getInstance().getReference("Doctors").child(doctorId).child("Slots").child(selectedday);
-            reference2.setValue(Slots);
+            reference2.setValue(timeslots);
 
-    }
-
-    public  ArrayList<String> getTimeSlot(int slotMinute, String strFromTme, String strToTime,  ArrayList<String> timeSlot){
-        int fromHour, fromMinute, toHour, toMinute;
-        fromHour = Integer.parseInt(strFromTme.split(":")[0]);
-        fromMinute = Integer.parseInt(strFromTme.split(":")[1]);
-
-        toHour = Integer.parseInt(strToTime.split(":")[0]);
-        toMinute = Integer.parseInt(strToTime.split(":")[1]);
-
-        long slot = slotMinute*60*1000;
-        Calendar calendar2 = Calendar.getInstance();
-        calendar2.set(Calendar.HOUR_OF_DAY, fromHour);
-        calendar2.set(Calendar.MINUTE, fromMinute);
-
-        long currentTime = calendar2.getTimeInMillis();
-        Calendar calendar1 = Calendar.getInstance();
-        calendar1.set(Calendar.HOUR_OF_DAY, toHour);
-        calendar1.set(Calendar.MINUTE, toMinute);
-
-        long endTime = calendar1.getTimeInMillis();
-
-        timeSlot = new ArrayList<>();
-        while (currentTime < endTime){
-            timeSlot.add(sdf.format(new Date(currentTime)));
-            currentTime = currentTime + slot;
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
-return timeSlot;
+
+    }
+
+    public void intervals(int begin, int end, int interval, ArrayList timeslots){
+        for (int time = begin; time<= end; time+=interval){
+            int hrs, min;
+            hrs = time/60;
+            min = time/60;
+            String slot ="";
+
+            if (hrs >= 12)
+            {
+                hrs -=12;
+                slot = String.format("%02d:%02d"+" PM", hrs, min);
+            }
+            else
+            if (hrs < 12)
+            {
+                slot = String.format("%02d:%02d"+" AM", hrs, min);
+            }
+
+            timeslots.add(slot);
+        }
     }
 }
+

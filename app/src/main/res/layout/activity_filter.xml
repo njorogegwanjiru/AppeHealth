@@ -4,33 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.eHealthProject.Patient.Filter">
+    tools:context="com.example.eHealthProject.Patient.Filter"
+    android:padding="8dp">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/ic_filter_list_black_24dp"/>
     <HorizontalScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <android.support.design.chip.ChipGroup
-            android:id="@+id/choice_chip_group"
-            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:singleSelection="true">
-
-            <android.support.design.chip.Chip
-                android:id="@+id/choice_chip"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+            <Button
+                android:id="@+id/locationFilter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/chipsbg"
                 android:text="Location"
-                android:background="@drawable/forms"/>
-
-            <android.support.design.chip.Chip
-                android:id="@+id/choice_chip2"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_margin="5dp"
+                android:padding="8dp"
+                />
+            <Button
+                android:id="@+id/hospitalFilter"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:text="Category" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/chipsbg"
+                android:text="Hospital"
+                android:layout_margin="5dp"
+                android:padding="8dp"
+                />
+            <Button
+                android:id="@+id/specializationFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chipsbg"
+                android:text="Specialization"
+                android:layout_margin="5dp"
+                android:padding="8dp"
+                />
+            <Button
+                android:id="@+id/ageFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chipsbg"
+                android:text="Age"
+                android:layout_margin="5dp"
+                android:padding="8dp"
+                />
+            <Button
+                android:id="@+id/genderFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chipsbg"
+                android:text="Gender"
+                android:layout_margin="5dp"
+                android:padding="8dp"
+                />
+            <Button
+                android:id="@+id/availabilityFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/chipsbg"
+                android:text="Availability"
+                android:layout_margin="5dp"
+                android:padding="8dp"
+                />
+        </LinearLayout>
 
-            </android.support.design.chip.ChipGroup>
+
     </HorizontalScrollView>
 
 

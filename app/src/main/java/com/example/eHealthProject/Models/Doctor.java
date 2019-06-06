@@ -1,15 +1,17 @@
 package com.example.eHealthProject.Models;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Doctor {
-    private String id, Names, Specialization,Email, Phone, Practice, Gender, Institution, YOB, Location, nationalID,Times;
-    private List Days;
+    private String id, Names, Specialization,Email, Phone, Practice, Gender, Institution, YOB, Location, nationalID;
+    private List<String> Days;
+    private HashMap<String, Object> Slots, Times;
 
     public Doctor() {
     }
 
-    public Doctor(String id, String names, String specialization, String email, String phone, String practice, String gender, String institution, String YOB, String location, String nationalID, String times, List days) {
+    public Doctor(String id, String names, String specialization, String email, String phone, String practice, String gender, String institution, String YOB, String location, String nationalID, List<String> days, HashMap<String, Object> slots, HashMap<String, Object> times) {
         this.id = id;
         Names = names;
         Specialization = specialization;
@@ -21,8 +23,9 @@ public class Doctor {
         this.YOB = YOB;
         Location = location;
         this.nationalID = nationalID;
-        Times = times;
         Days = days;
+        Slots = slots;
+        Times = times;
     }
 
     public String getId() {
@@ -113,40 +116,27 @@ public class Doctor {
         this.nationalID = nationalID;
     }
 
-
-    public List getDays() {
+    public List<String> getDays() {
         return Days;
     }
 
-    public void setDays(List days) {
+    public void setDays(List<String> days) {
         Days = days;
     }
 
+    public HashMap<String, Object> getSlots() {
+        return Slots;
+    }
 
-    public String getTimes() {
+    public void setSlots(HashMap<String, Object> slots) {
+        Slots = slots;
+    }
+
+    public HashMap<String, Object> getTimes() {
         return Times;
     }
 
-    public void setTimes(String times) {
+    public void setTimes(HashMap<String, Object> times) {
         Times = times;
-    }
-
-    @Override
-    public String toString() {
-        return "Doctor{" +
-                "id='" + id + '\'' +
-                ", Names='" + Names + '\'' +
-                ", Specialization='" + Specialization + '\'' +
-                ", Email='" + Email + '\'' +
-                ", Phone='" + Phone + '\'' +
-                ", Practice='" + Practice + '\'' +
-                ", Gender='" + Gender + '\'' +
-                ", Institution='" + Institution + '\'' +
-                ", YOB='" + YOB + '\'' +
-                ", Location='" + Location + '\'' +
-                ", nationalID='" + nationalID + '\'' +
-                ", Times='" + Times + '\'' +
-                ", Days=" + Days +
-                '}';
     }
 }
